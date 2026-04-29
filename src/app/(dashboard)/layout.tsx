@@ -4,7 +4,7 @@ import type { PropsWithChildren } from "react";
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
-    <div className="flex min-h-screen bg-[#060f0a]">
+    <div className="dashboard-theme flex min-h-screen bg-[#060f0a]">
       <Sidebar />
 
       <div className="w-full">

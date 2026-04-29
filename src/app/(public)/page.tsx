@@ -8,7 +8,9 @@ export const metadata: Metadata = {
     "Powerful, real-time data dashboards for modern teams. Visualize metrics, track KPIs, and make data-driven decisions with Nova Analytics.",
 };
 
-function Navbar() {
+import { User } from "@supabase/supabase-js";
+
+function Navbar({ user }: { user: User | null }) {
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#0a1a12]/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -63,18 +65,37 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/auth/sign-in"
-            className="rounded-lg px-4 py-2 text-sm font-medium text-gray-300 transition hover:text-white"
-          >
-            Sign In
-          </Link>
-          <Link
-            href="/auth/sign-up"
-            className="rounded-lg bg-[#4A7C59] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#4A7C59]/25 transition hover:bg-[#3A6347] hover:shadow-[#4A7C59]/40"
-          >
-            Get Started Free
-          </Link>
+          {user ? (
+            <Link
+              href="/dashboard"
+              className="group flex items-center gap-2 rounded-lg bg-[#4A7C59]/10 px-5 py-2.5 text-sm font-semibold text-[#6B9E7B] border border-[#4A7C59]/30 transition hover:bg-[#4A7C59]/20 hover:text-white"
+            >
+              Go to Dashboard
+              <svg
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          ) : (
+            <>
+              <Link
+                href="/auth/sign-in"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-300 transition hover:text-white"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/auth/sign-up"
+                className="rounded-lg bg-[#4A7C59] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#4A7C59]/25 transition hover:bg-[#3A6347] hover:shadow-[#4A7C59]/40"
+              >
+                Get Started Free
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
@@ -512,10 +533,15 @@ function Footer() {
   );
 }
 
-export default function LandingPage() {
+import { createClient } from "@/lib/supabase/server";
+
+export default async function LandingPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <div className="min-h-screen scroll-smooth">
-      <Navbar />
+      <Navbar user={user} />
       <HeroSection />
       <DashboardPreview />
       <FeaturesSection />

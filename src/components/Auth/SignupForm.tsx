@@ -4,18 +4,18 @@ import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
-import { Checkbox } from "../FormElements/checkbox";
 
-export default function SigninWithPassword() {
+export default function SignupForm() {
   const router = useRouter();
   const [data, setData] = useState({
     email: "",
     password: "",
-    remember: false,
+    confirmPassword: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData({
@@ -29,26 +29,58 @@ export default function SigninWithPassword() {
     setLoading(true);
     setError(null);
 
+    if (data.password !== data.confirmPassword) {
+      setError("Passwords do not match.");
+      setLoading(false);
+      return;
+    }
+
+    if (data.password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const supabase = createClient();
-      const { error: signInError } = await supabase.auth.signInWithPassword({
+      const { error: signUpError } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
       });
 
-      if (signInError) {
-        setError(signInError.message);
+      if (signUpError) {
+        setError(signUpError.message);
         setLoading(false);
         return;
       }
 
-      router.push("/");
-      router.refresh();
+      setSuccess(true);
+      setLoading(false);
+
+      // Auto-redirect after short delay
+      setTimeout(() => {
+        router.push("/");
+        router.refresh();
+      }, 1500);
     } catch {
       setError("An unexpected error occurred. Please try again.");
       setLoading(false);
     }
   };
+
+  if (success) {
+    return (
+      <div className="rounded-lg bg-green-light-7 px-6 py-8 text-center dark:bg-green-dark/10">
+        <div className="mb-3 text-4xl">✓</div>
+        <h3 className="mb-2 text-lg font-semibold text-dark dark:text-white">
+          Account Created!
+        </h3>
+        <p className="text-dark-5 dark:text-dark-6">
+          Redirecting you to the dashboard...
+        </p>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -72,29 +104,24 @@ export default function SigninWithPassword() {
       <InputGroup
         type="password"
         label="Password"
-        className="mb-5 [&_input]:py-[15px]"
-        placeholder="Enter your password"
+        className="mb-4 [&_input]:py-[15px]"
+        placeholder="Create a password"
         name="password"
         handleChange={handleChange}
         value={data.password}
         icon={<PasswordIcon />}
       />
 
-      <div className="mb-6 flex items-center justify-between gap-2 py-2 font-medium">
-        <Checkbox
-          label="Remember me"
-          name="remember"
-          withIcon="check"
-          minimal
-          radius="md"
-          onChange={(e) =>
-            setData({
-              ...data,
-              remember: e.target.checked,
-            })
-          }
-        />
-      </div>
+      <InputGroup
+        type="password"
+        label="Confirm Password"
+        className="mb-5 [&_input]:py-[15px]"
+        placeholder="Confirm your password"
+        name="confirmPassword"
+        handleChange={handleChange}
+        value={data.confirmPassword}
+        icon={<PasswordIcon />}
+      />
 
       <div className="mb-4.5">
         <button
@@ -102,7 +129,7 @@ export default function SigninWithPassword() {
           disabled={loading}
           className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70"
         >
-          Sign In
+          Create Account
           {loading && (
             <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent" />
           )}

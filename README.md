@@ -1,92 +1,137 @@
-# NextAdmin - Next.js Admin Dashboard Template and Components
+# Nova Analytics Dashboard
 
-**NextAdmin** is a Free, open-source Next.js admin dashboard toolkit featuring 200+ UI components and templates that come with pre-built elements, components, pages, high-quality design, integrations, and much more to help you create powerful admin dashboards with ease.
+A whitelabeled data analytics dashboard built with **Next.js 16**, **React 19**, **Tailwind CSS**, and **Supabase Authentication**. Originally forked from [NextAdminHQ/nextjs-admin-dashboard](https://github.com/NextAdminHQ/nextjs-admin-dashboard) and rebranded as **Nova Analytics** for a fictional client.
 
+## 🚀 Live Demo
 
-[![nextjs admin template](https://cdn.pimjo.com/nextadmin-2.png)](https://nextadmin.co/)
+- **Landing Page**: [Your Deployment URL]
+- **Sign up** with any valid email to create an account
 
+## ✨ Features
 
-**NextAdmin** provides you with a diverse set of dashboard UI components, elements, examples and pages necessary for creating top-notch admin panels or dashboards with **powerful** features and integrations. Whether you are working on a complex web application or a basic website, **NextAdmin** has got you covered.
+- **Premium Landing Page** — Responsive, modern landing page with hero section, feature cards, dashboard preview, and CTA
+- **Real Authentication** — Supabase-powered sign-up/sign-in with session management and route protection
+- **200+ Dashboard Components** — Charts, tables, forms, calendars, and UI elements
+- **Cream-Green Brand Identity** — Cohesive color palette with `#4A7C59` primary and `#FDF8F0` cream accents
+- **Dark Mode Support** — Full dark/light theme toggle
+- **Responsive Design** — Mobile-first, fully responsive on all screen sizes
+- **Route Protection** — Next.js middleware protects dashboard routes, redirects unauthenticated users
 
-### [✨ Visit Website](https://nextadmin.co/)
-### [🚀 Live Demo](https://demo.nextadmin.co/)
-### [📖 Docs](https://docs.nextadmin.co/)
+## 🛠 Tech Stack
 
-By leveraging the latest features of **Next.js 14** and key functionalities like **server-side rendering (SSR)**, **static site generation (SSG)**, and seamless **API route integration**, **NextAdmin** ensures optimal performance. With the added benefits of **React 18 advancements** and **TypeScript** reliability, **NextAdmin** is the ultimate choice to kickstart your **Next.js** project efficiently.
+| Technology | Purpose |
+|-----------|---------|
+| Next.js 16 | React framework with SSR/SSG |
+| React 19 | UI library |
+| TypeScript | Type safety |
+| Tailwind CSS 3 | Utility-first CSS |
+| Supabase | Auth (email/password) |
+| ApexCharts | Dashboard charts |
+| Vercel | Deployment (recommended) |
 
-## Installation
+## 📦 Setup Instructions
 
-1. Download/fork/clone the repo and Once you're in the correct directory, it's time to install all the necessary dependencies. You can do this by typing the following command:
+### Prerequisites
+- Node.js 18+ and npm
+- A [Supabase](https://supabase.com) project (free tier works)
 
+### 1. Clone the repository
+```bash
+git clone https://github.com/IrigoyenCodes/dotcommoguls-trial-run.git
+cd dotcommoguls-trial-run
 ```
+
+### 2. Install dependencies
+```bash
 npm install
 ```
-If you're using **Yarn** as your package manager, the command will be:
 
-```
-yarn install
+### 3. Configure environment variables
+Copy the example env file and fill in your Supabase credentials:
+```bash
+cp .env.local.example .env.local
 ```
 
-2. Okay, you're almost there. Now all you need to do is start the development server. If you're using **npm**, the command is:
-
+Edit `.env.local`:
 ```
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+```
+
+You can find these in your Supabase project: **Settings → API**.
+
+### 4. Set up Supabase Auth
+In your Supabase dashboard:
+1. Go to **Authentication → Providers**
+2. Ensure **Email** provider is enabled
+3. (Optional) Disable email confirmation for testing: **Authentication → Settings → Confirm email** → toggle off
+
+### 5. Create a test user
+Either sign up through the app's registration page, or create a user manually in the Supabase dashboard under **Authentication → Users**.
+
+### 6. Run the development server
+```bash
 npm run dev
 ```
-And if you're using **Yarn**, it's:
+
+Visit [http://localhost:3000](http://localhost:3000) to see the landing page.
+
+## 🗂 Project Structure
 
 ```
-yarn dev
+src/
+├── app/
+│   ├── (public)/          # Public routes (landing page, auth)
+│   │   ├── page.tsx       # Landing page
+│   │   └── auth/          # Sign-in & Sign-up pages
+│   ├── (dashboard)/       # Protected routes (requires auth)
+│   │   ├── layout.tsx     # Dashboard layout with Sidebar + Header
+│   │   ├── dashboard/     # Main dashboard view
+│   │   ├── calendar/      # Calendar page
+│   │   ├── charts/        # Charts page
+│   │   ├── forms/         # Form pages
+│   │   ├── profile/       # User profile
+│   │   └── tables/        # Data tables
+│   ├── api/auth/          # Auth API routes
+│   ├── layout.tsx         # Root layout (minimal shell)
+│   └── providers.tsx      # Theme + Sidebar context providers
+├── components/            # Reusable UI components
+├── lib/supabase/          # Supabase client configurations
+├── middleware.ts           # Auth middleware for route protection
+└── css/                   # Global styles
 ```
 
-And voila! You're now ready to start developing. **Happy coding**!
+## 🔐 Environment Variables
 
-## Highlighted Features
-**200+ Next.js Dashboard Ul Components and Templates** - includes a variety of prebuilt **Ul elements, components, pages, and examples** crafted with a high-quality design.
-Additionally, features seamless **essential integrations and extensive functionalities**.
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon/public key |
 
-- A library of over **200** professional dashboard UI components and elements.
-- Five distinctive dashboard variations, catering to diverse use-cases.
-- A comprehensive set of essential dashboard and admin pages.
-- More than **45** **Next.js** files, ready for use.
-- Styling facilitated by **Tailwind CSS** files.
-- A design that resonates premium quality and high aesthetics.
-- A handy UI kit with assets.
-- Over ten web apps complete with examples.
-- Support for both **dark mode** and **light mode**.
-- Essential integrations including - Authentication (**NextAuth**), Database (**Postgres** with **Prisma**), and Search (**Algolia**).
-- Detailed and user-friendly documentation.
-- Customizable plugins and add-ons.
-- **TypeScript** compatibility.
-- Plus, much more!
+## 🚢 Deployment
 
-All these features and more make **NextAdmin** a robust, well-rounded solution for all your dashboard development needs.
+### Vercel (Recommended)
+1. Push to GitHub
+2. Import the repo in [Vercel](https://vercel.com)
+3. Add environment variables in Vercel's dashboard
+4. Deploy!
 
-## Update Logs
+### Manual Build
+```bash
+npm run build
+npm run start
+```
 
-### Version 1.2.3 - [Mar 16, 2026]
-- Update Next.js to ^16.1.6 and configure image qualities
+## 📝 Known Limitations
 
-### Version 1.2.2 - [December 01, 2025]
-- Updated to Next.js 16
-- Updated dependencies.
+- Google OAuth sign-in button is removed (only email/password auth is functional)
+- Dashboard data is sample/mock data from the original template
+- No database integration for dashboard data (charts use hardcoded sample data)
 
-### Version 1.2.1 - [Mar 20, 2025]
-- Fix Peer dependency issues and NextConfig warning.
-- Updated apexcharts and react-apexhcarts to the latest version.
+## 🎥 Video Walkthrough
 
-### Version 1.2.0 - Major Upgrade and UI Improvements - [Jan 27, 2025]
+[Link to walkthrough video]
 
-- Upgraded to Next.js v15 and updated dependencies
-- API integration with loading skeleton for tables and charts.
-- Improved code structure for better readability.
-- Rebuilt components like dropdown, sidebar, and all ui-elements using accessibility practices.
-- Using search-params to store dropdown selection and refetch data.
-- Semantic markups, better separation of concerns and more.
+---
 
-### Version 1.1.0
-- Updated Dependencies
-- Removed Unused Integrations
-- Optimized App
-
-### Version 1.0
-- Initial Release - [May 13, 2024]
+Built with ❤️ using AI-assisted development.

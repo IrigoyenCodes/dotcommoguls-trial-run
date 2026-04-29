@@ -4,7 +4,78 @@
 
 @layer base {
   body {
-    @apply bg-gray-2 text-dark-5 dark:bg-[#020D1A] dark:text-dark-6;
+    @apply bg-[#060f0a] text-gray-400;
+  }
+
+  /* ===== Nova Analytics Dark Green Theme ===== */
+  /* Override all dashboard card backgrounds */
+  .bg-white {
+    background-color: #0d1f15 !important;
+  }
+
+  .bg-gray-2 {
+    background-color: #060f0a !important;
+  }
+
+  /* Border overrides */
+  .border-stroke,
+  .border-gray-200,
+  .border-gray-3 {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* Text color overrides for dashboard content */
+  .text-dark {
+    color: #f0f0f0 !important;
+  }
+
+  .text-dark-2 {
+    color: #e0e0e0 !important;
+  }
+
+  .text-dark-3 {
+    color: #d0d0d0 !important;
+  }
+
+  .text-dark-4 {
+    color: #9ca3af !important;
+  }
+
+  .text-dark-5 {
+    color: #9ca3af !important;
+  }
+
+  /* Shadow overrides — remove white/light shadows */
+  .shadow-1,
+  .shadow-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .shadow-default {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Dropdown overrides */
+  .bg-white.shadow-md {
+    background-color: #0d1f15 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Input/form overrides */
+  input,
+  select,
+  textarea {
+    color: #e0e0e0 !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #6b7280 !important;
+  }
+
+  /* Table and divider overrides */
+  .divide-stroke > :not(:last-child) {
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 }
 
@@ -32,7 +103,7 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply relative flex-1 rounded-full bg-neutral-200/40 dark:bg-stroke-dark;
+    @apply relative flex-1 rounded-full bg-white/10;
   }
 
   
@@ -224,14 +295,14 @@ span.flatpickr-weekday,
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #3c50e0;
+  background: #4A7C59;
   @apply !border-primary !bg-primary hover:!border-primary hover:!bg-primary;
 }
 
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
-  box-shadow: -10px 0 0 #3c50e0;
+  box-shadow: -10px 0 0 #4A7C59;
 }
 
 .map-btn .jvm-zoom-btn {
@@ -476,5 +547,33 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .custom-gradient-1 {
-  background-image: linear-gradient(145deg, #eef 0%, #fff8fc 100%);
+  background-image: linear-gradient(145deg, #e8f5e9 0%, #FDF8F0 100%);
+}
+
+/* ===== Nova Analytics Animated Gradient Text ===== */
+.nova-gradient-text {
+  background: linear-gradient(
+    270deg,
+    #4A7C59,
+    #6B9E7B,
+    #3A6347,
+    #8BC49C,
+    #4A7C59
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: novaGradientShift 6s ease infinite;
+}
+
+@keyframes novaGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Smooth Scroll ===== */
+html {
+  scroll-behavior: smooth;
 }

@@ -14,7 +14,7 @@ export function ScrollReveal({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Wait for the next tick to ensure the initial opacity-0 state is painted by the browser
+    // A slightly longer delay ensures the browser has painted the initial frame
     const timer = setTimeout(() => {
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -31,7 +31,7 @@ export function ScrollReveal({
       }
       
       return () => observer.disconnect();
-    }, 100);
+    }, 150);
 
     return () => clearTimeout(timer);
   }, []);
@@ -39,10 +39,12 @@ export function ScrollReveal({
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-1000 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      } ${className}`}
+      style={{ 
+        transition: `all 1000ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(30px)"
+      }}
+      className={className}
     >
       {children}
     </div>

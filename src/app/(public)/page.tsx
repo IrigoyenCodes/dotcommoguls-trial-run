@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 import { User } from "@supabase/supabase-js";
+import { ScrollReveal } from "@/components/Landing/ScrollReveal";
 
 function Navbar({ user }: { user: User | null }) {
   return (
@@ -109,9 +110,9 @@ function Navbar({ user }: { user: User | null }) {
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#0a1a12] pt-32 pb-20 md:pt-40 md:pb-32">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32">
       {/* Background effects */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0">
         <div className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-[#4A7C59]/20 blur-[120px]" />
         <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-[#6B9E7B]/15 blur-[100px]" />
         <div className="absolute top-1/2 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4A7C59]/10 blur-[80px]" />
@@ -127,28 +128,31 @@ function HeroSection() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6 text-center">
-        {/* Badge */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#4A7C59]/30 bg-[#4A7C59]/10 px-4 py-1.5">
-          <span className="h-2 w-2 rounded-full bg-[#6B9E7B] animate-pulse" />
-          <span className="text-xs font-medium text-[#6B9E7B]">
-            Now with real-time analytics
-          </span>
-        </div>
+        <ScrollReveal delay={100}>
+          {/* Badge */}
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#4A7C59]/30 bg-[#4A7C59]/10 px-4 py-1.5">
+            <span className="h-2 w-2 rounded-full bg-[#6B9E7B] animate-pulse" />
+            <span className="text-xs font-medium text-[#6B9E7B]">
+              Now with real-time analytics
+            </span>
+          </div>
 
-        <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
-          Data insights that{" "}
-          <span className="nova-gradient-text">
-            drive decisions
-          </span>
-        </h1>
+          <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
+            Data insights that{" "}
+            <span className="nova-gradient-text">
+              drive decisions
+            </span>
+          </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400 md:text-xl">
-          Nova Analytics transforms your raw data into actionable insights.
-          Beautiful dashboards, real-time metrics, and powerful reporting — all
-          in one platform.
-        </p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400 md:text-xl">
+            Nova Analytics transforms your raw data into actionable insights.
+            Beautiful dashboards, real-time metrics, and powerful reporting — all
+            in one platform.
+          </p>
+        </ScrollReveal>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <ScrollReveal delay={300}>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/auth/sign-up"
             className="group relative inline-flex items-center gap-2 rounded-xl bg-[#4A7C59] px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-[#4A7C59]/30 transition-all hover:bg-[#3A6347] hover:shadow-[#4A7C59]/50 hover:-translate-y-0.5"
@@ -175,8 +179,10 @@ function HeroSection() {
             View Live Demo
           </Link>
         </div>
+        </ScrollReveal>
 
         {/* Stats */}
+        <ScrollReveal delay={500}>
         <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/10 pt-12 md:mx-auto md:max-w-xl">
           <div>
             <div className="text-2xl font-bold text-white md:text-3xl">10K+</div>
@@ -198,27 +204,31 @@ function HeroSection() {
 
 function DashboardPreview() {
   return (
-    <section id="dashboard" className="relative bg-[#0a1a12] py-20 md:py-32">
+    <section id="dashboard" className="relative py-20 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
-            Your data, beautifully{" "}
-            <span className="text-[#6B9E7B]">visualized</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-            Get a complete overview of your business metrics with our
-            intuitive dashboard. From revenue tracking to user analytics.
-          </p>
-        </div>
-
-        <div className="relative mt-16">
-          {/* Glow behind dashboard */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#4A7C59]/30 to-[#6B9E7B]/20 blur-3xl" />
-
-          <div className="relative">
-            <MiniDashboard />
+        <ScrollReveal>
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-white md:text-5xl">
+              Your data, beautifully{" "}
+              <span className="text-[#6B9E7B]">visualized</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+              Get a complete overview of your business metrics with our
+              intuitive dashboard. From revenue tracking to user analytics.
+            </p>
           </div>
-        </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={200}>
+          <div className="relative mt-16">
+            {/* Glow behind dashboard */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#4A7C59]/30 to-[#6B9E7B]/20 blur-3xl" />
+
+            <div className="relative">
+              <MiniDashboard />
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -289,7 +299,7 @@ const features = [
 
 function FeaturesSection() {
   return (
-    <section id="features" className="relative bg-[#060f0a] py-20 md:py-32">
+    <section id="features" className="relative py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#4A7C59]/30 bg-[#4A7C59]/10 px-4 py-1.5">
@@ -309,20 +319,21 @@ function FeaturesSection() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:border-[#4A7C59]/30 hover:bg-white/[0.04]"
-            >
-              <div className="mb-5 inline-flex rounded-xl bg-[#4A7C59]/10 p-3 text-[#6B9E7B] transition-colors group-hover:bg-[#4A7C59]/20">
-                {feature.icon}
+            <ScrollReveal key={index} delay={index * 100}>
+              <div
+                className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:border-[#4A7C59]/30 hover:bg-white/[0.04] h-full"
+              >
+                <div className="mb-5 inline-flex rounded-xl bg-[#4A7C59]/10 p-3 text-[#6B9E7B] transition-colors group-hover:bg-[#4A7C59]/20">
+                  {feature.icon}
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-white">
+                  {feature.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-400">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-white">
-                {feature.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-gray-400">
-                {feature.description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -383,8 +394,9 @@ const testimonials = [
 
 function ReviewsSection() {
   return (
-    <section id="reviews" className="relative bg-[#0a1a12] py-20 md:py-32">
+    <section id="reviews" className="relative py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
+        <ScrollReveal>
         <div className="text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#4A7C59]/30 bg-[#4A7C59]/10 px-4 py-1.5">
             <span className="text-xs font-medium text-[#6B9E7B]">
@@ -400,42 +412,44 @@ function ReviewsSection() {
             to power their decision-making.
           </p>
         </div>
+        </ScrollReveal>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:border-[#4A7C59]/20 hover:bg-white/[0.04]"
-            >
-              {/* Stars */}
-              <div className="mb-4 flex gap-1">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <svg key={i} className="h-4 w-4 text-[#6B9E7B]" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-
-              {/* Quote */}
-              <blockquote className="mb-6 text-sm leading-relaxed text-gray-300">
-                &ldquo;{testimonial.quote}&rdquo;
-              </blockquote>
-
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4A7C59]/20 text-sm font-bold text-[#6B9E7B]">
-                  {testimonial.avatar}
+            <ScrollReveal key={index} delay={index * 100}>
+              <div
+                className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:border-[#4A7C59]/20 hover:bg-white/[0.04] h-full"
+              >
+                {/* Stars */}
+                <div className="mb-4 flex gap-1">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <svg key={i} className="h-4 w-4 text-[#6B9E7B]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
                 </div>
-                <div>
-                  <div className="text-sm font-medium text-white">
-                    {testimonial.name}
+
+                {/* Quote */}
+                <blockquote className="mb-6 text-sm leading-relaxed text-gray-300">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4A7C59]/20 text-sm font-bold text-[#6B9E7B]">
+                    {testimonial.avatar}
                   </div>
-                  <div className="text-xs text-gray-500">
-                    {testimonial.role}, {testimonial.company}
+                  <div>
+                    <div className="text-sm font-medium text-white">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {testimonial.role}, {testimonial.company}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -445,7 +459,7 @@ function ReviewsSection() {
 
 function CTASection() {
   return (
-    <section id="pricing" className="relative overflow-hidden bg-[#060f0a] py-20 md:py-32">
+    <section id="pricing" className="relative py-20 md:py-32">
       {/* Background glow */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4A7C59]/15 blur-[120px]" />
@@ -545,7 +559,7 @@ export default async function LandingPage() {
   const { data: { user } } = await supabase.auth.getUser();
 
   return (
-    <div className="min-h-screen scroll-smooth">
+    <div className="min-h-screen scroll-smooth overflow-x-hidden bg-gradient-to-b from-[#0a1a12] via-[#060f0a] to-[#0a1a12]">
       <Navbar user={user} />
       <HeroSection />
       <DashboardPreview />

@@ -4,7 +4,7 @@ A whitelabeled data analytics dashboard built with **Next.js 16**, **React 19**,
 
 ## 🚀 Live Demo
 
-- **Landing Page**: [Your Deployment URL]
+- **Landing Page**: [https://dotcommoguls-trial-run.vercel.app](https://dotcommoguls-trial-run.vercel.app)
 - **Sign up** with any valid email to create an account, or use the test credentials below:
 
 ### Test Credentials
@@ -142,7 +142,7 @@ npm run start
 
 ## 🎥 Video Walkthrough
 
-[Link to walkthrough video]
+[https://youtu.be/T4nyyvnXbDc](https://youtu.be/T4nyyvnXbDc)
 
 ## 🌟 Extra Credit: Development Process
 

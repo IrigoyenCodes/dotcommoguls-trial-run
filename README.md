@@ -127,11 +127,18 @@ npm run build
 npm run start
 ```
 
-## 📝 Known Limitations
+## 📝 Known Limitations & Shortcuts Taken
 
-- Google OAuth sign-in button is removed (only email/password auth is functional)
+**Limitations & Shortcuts:**
+- Google OAuth sign-in button is removed (only email/password auth is functional for this trial)
 - Dashboard data is sample/mock data from the original template
 - No database integration for dashboard data (charts use hardcoded sample data)
+- We opted to scope CSS overrides to a `.dashboard-theme` class rather than completely rewriting all core components, saving significant development time while ensuring visual isolation.
+
+**What I would improve with more time:**
+- **Add E2E Testing:** Set up Cypress or Playwright to test the full auth flow (landing page -> sign up -> dashboard).
+- **Backend Integration:** Replace the static dashboard charts with live Supabase database queries.
+- **Analytics:** Implement a tool like Plausible or PostHog to track conversion rates on the landing page hero section.
 
 ## 🎥 Video Walkthrough
 

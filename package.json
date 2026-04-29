@@ -1,6 +1,6 @@
 {
-  "name": "free-nextadmin-nextjs",
-  "version": "1.2.3",
+  "name": "nova-analytics",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

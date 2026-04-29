@@ -197,6 +197,7 @@ function HeroSection() {
             <div className="mt-1 text-sm text-gray-500">Data Points</div>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

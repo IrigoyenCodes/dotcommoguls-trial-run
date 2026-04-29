@@ -66,20 +66,25 @@ function Navbar({ user }: { user: User | null }) {
 
         <div className="flex items-center gap-3">
           {user ? (
-            <Link
-              href="/dashboard"
-              className="group flex items-center gap-2 rounded-lg bg-[#4A7C59]/10 px-5 py-2.5 text-sm font-semibold text-[#6B9E7B] border border-[#4A7C59]/30 transition hover:bg-[#4A7C59]/20 hover:text-white"
-            >
-              Go to Dashboard
-              <svg
-                className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div className="flex items-center gap-4">
+              <span className="hidden text-sm font-medium text-gray-300 md:block">
+                {user.email}
+              </span>
+              <Link
+                href="/dashboard"
+                className="group flex items-center gap-2 rounded-lg bg-[#4A7C59]/10 px-5 py-2.5 text-sm font-semibold text-[#6B9E7B] border border-[#4A7C59]/30 transition hover:bg-[#4A7C59]/20 hover:text-white"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
+                Go to Dashboard
+                <svg
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+            </div>
           ) : (
             <>
               <Link

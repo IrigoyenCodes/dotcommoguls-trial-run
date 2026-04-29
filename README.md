@@ -5,7 +5,11 @@ A whitelabeled data analytics dashboard built with **Next.js 16**, **React 19**,
 ## 🚀 Live Demo
 
 - **Landing Page**: [Your Deployment URL]
-- **Sign up** with any valid email to create an account
+- **Sign up** with any valid email to create an account, or use the test credentials below:
+
+### Test Credentials
+- **Email:** `dotcommedia@example.com`
+- **Password:** `dotcom123`
 
 ## ✨ Features
 

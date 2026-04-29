@@ -9,13 +9,14 @@ A whitelabeled data analytics dashboard built with **Next.js 16**, **React 19**,
 
 ## ✨ Features
 
-- **Premium Landing Page** — Responsive, modern landing page with hero section, feature cards, dashboard preview, and CTA
+- **Premium Landing Page** — Responsive, modern landing page with hero section, animated gradients, feature cards, testimonials, dashboard preview, and CTA
 - **Real Authentication** — Supabase-powered sign-up/sign-in with session management and route protection
 - **200+ Dashboard Components** — Charts, tables, forms, calendars, and UI elements
 - **Cream-Green Brand Identity** — Cohesive color palette with `#4A7C59` primary and `#FDF8F0` cream accents
 - **Dark Mode Support** — Full dark/light theme toggle
 - **Responsive Design** — Mobile-first, fully responsive on all screen sizes
 - **Route Protection** — Next.js middleware protects dashboard routes, redirects unauthenticated users
+- **CI/CD Pipeline** — Automated testing, linting, and build validation via GitHub Actions (Extra Credit)
 
 ## 🛠 Tech Stack
 

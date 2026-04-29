@@ -35,7 +35,7 @@ function AnimatedNumber({ target, duration = 2000, prefix = "", suffix = "" }: {
   return (
     <span>
       {prefix}
-      {value.toLocaleString()}
+      {new Intl.NumberFormat('en-US').format(value)}
       {suffix}
     </span>
   );
@@ -258,7 +258,7 @@ function LiveTicker() {
         <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
       </span>
       <span className="text-[11px] text-gray-400">
-        <span className="font-medium text-green-400">{visitors.toLocaleString()}</span> active now
+        <span className="font-medium text-green-400">{new Intl.NumberFormat('en-US').format(visitors)}</span> active now
       </span>
     </div>
   );

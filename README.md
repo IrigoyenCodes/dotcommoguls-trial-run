@@ -144,6 +144,10 @@ npm run start
 
 [Link to walkthrough video]
 
+## 🌟 Extra Credit: Development Process
+
+As requested for extra credit, the complete, unedited conversation history with Claude Code (Antigravity) is included in the repository root as `claude_conversation_log.txt`. It demonstrates how I broke down the requirements, debugged CI/CD pipelines, tackled hydration issues, and iterated on the design using AI assistance.
+
 ---
 
 Built with ❤️ using AI-assisted development.
